@@ -50,7 +50,7 @@ class SecurityConfig(
             .and()
             .build()
 
-
+    @Bean
     fun passwordEncoder(): PasswordEncoder =
         BCryptPasswordEncoder()
 }
