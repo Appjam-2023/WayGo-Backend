@@ -1,6 +1,6 @@
 package com.helpme.waygo.global.security.auth
 
-import com.helpme.waygo.auth.entity.User
+import com.helpme.waygo.domain.auth.entity.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 

@@ -1,6 +1,6 @@
 package com.helpme.waygo.domain.location.entity
 
-import com.helpme.waygo.auth.entity.User
+import com.helpme.waygo.domain.auth.entity.User
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType

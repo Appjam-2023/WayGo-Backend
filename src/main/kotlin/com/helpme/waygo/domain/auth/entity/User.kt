@@ -1,4 +1,4 @@
-package com.helpme.waygo.auth.entity
+package com.helpme.waygo.domain.auth.entity
 
 import com.helpme.waygo.auth.enum.UserRole
 import javax.persistence.*
@@ -18,5 +18,13 @@ class User(
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
-    val userRole: MutableList<UserRole> = mutableListOf()
+    val userRole: MutableList<UserRole> = mutableListOf(),
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
+    val guardianId: MutableList<Long> = mutableListOf(),
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
+    val wardId: MutableList<Long> = mutableListOf()
 )
