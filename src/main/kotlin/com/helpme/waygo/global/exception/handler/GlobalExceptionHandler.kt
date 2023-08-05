@@ -1,8 +1,8 @@
 package com.helpme.waygo.global.exception.handler
 
-import com.msg.gauth.global.exception.ErrorCode
-import com.msg.gauth.global.exception.ErrorResponse
-import com.msg.gauth.global.exception.exceptions.BasicException
+import com.helpme.waygo.global.exception.ErrorCode
+import com.helpme.waygo.global.exception.ErrorResponse
+import com.helpme.waygo.global.exception.exceptions.BasicException
 import org.slf4j.Logger
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

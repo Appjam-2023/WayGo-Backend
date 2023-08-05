@@ -1,4 +1,4 @@
-package com.msg.gauth.global.exception
+package com.helpme.waygo.global.exception
 
 enum class ErrorCode(
     val msg: String,

@@ -1,5 +1,5 @@
-package com.msg.gauth.global.exception.exceptions
+package com.helpme.waygo.global.exception.exceptions
 
-import com.msg.gauth.global.exception.ErrorCode
+import com.helpme.waygo.global.exception.ErrorCode
 
 class BadRequestException : BasicException(ErrorCode.BAD_REQUEST)
