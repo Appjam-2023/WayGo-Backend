@@ -4,6 +4,7 @@ import com.helpme.waygo.domain.location.presentation.dto.request.CreateWearingAn
 import com.helpme.waygo.domain.location.service.CreateWearingAndLocationService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -16,5 +17,10 @@ class LocationController(
     fun createWearingAndLocation(@RequestBody createWearingAndLocationRequest: CreateWearingAndLocationRequest): ResponseEntity<Void> {
         createWearingAndLocationService.execute(createWearingAndLocationRequest)
         return ResponseEntity(HttpStatus.CREATED)
+    }
+
+    @DeleteMapping("/chase")
+    fun deleteWearingAndLocation(): ResponseEntity<Void> {
+        return ResponseEntity.noContent().build()
     }
 }

@@ -1,6 +1,7 @@
 package com.helpme.waygo.domain.auth.entity
 
 import com.helpme.waygo.auth.enum.UserRole
+import com.helpme.waygo.domain.location.entity.Location
 import javax.persistence.*
 
 @Entity
@@ -26,5 +27,9 @@ class User(
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
-    val wardId: MutableList<Long> = mutableListOf()
+    val wardId: MutableList<Long> = mutableListOf(),
+
+    @OneToOne
+    @JoinColumn(name = "location_id")
+    val location: Location? = null
 )
