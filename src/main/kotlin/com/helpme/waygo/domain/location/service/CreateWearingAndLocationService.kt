@@ -25,7 +25,7 @@ class CreateWearingAndLocationService(
             imgUrl = createWearingAndLocationRequest.imgUrl
         )
 
-        userRepository.save(createWearingAndLocationRequest.toEntity(user, location))
         locationRepository.save(location)
+        userRepository.save(createWearingAndLocationRequest.toEntity(user, location))
     }
 }

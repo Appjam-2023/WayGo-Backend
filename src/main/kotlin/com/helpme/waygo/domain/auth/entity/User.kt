@@ -29,7 +29,7 @@ class User(
     @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
     val wardId: MutableList<Long> = mutableListOf(),
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     @JoinColumn(name = "location_id")
-    val location: Location? = null
+    var location: Location? = null
 )
