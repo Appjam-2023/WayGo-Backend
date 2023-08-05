@@ -33,3 +33,7 @@ cloud:
 jwt:
   accessSecret: ${JWT_ACCESS}
   refreshSecret: ${JWT_REFRESH}
+
+sms:
+  apiKey: ${SMS_KEY}
+  apiSecret: ${SMS_SECRET}

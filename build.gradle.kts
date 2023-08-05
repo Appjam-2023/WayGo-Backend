@@ -30,6 +30,7 @@ dependencies {
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
+    implementation("net.nurigo:javaSDK:2.2")
 
     implementation("com.amazonaws:aws-java-sdk-s3:1.12.364")
 

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import java.net.http.HttpHeaders
+import javax.servlet.http.HttpServletRequest
 
 @RestController
 class LocationController(
@@ -22,8 +24,8 @@ class LocationController(
     }
 
     @DeleteMapping("/chase")
-    fun deleteWearingAndLocation(): ResponseEntity<Void> {
-        deleteWearingAndLocationService.execute()
+    fun deleteWearingAndLocation(httpServletRequest: HttpServletRequest): ResponseEntity<Void> {
+        deleteWearingAndLocationService.execute(httpServletRequest)
         return ResponseEntity.noContent().build()
     }
 }
