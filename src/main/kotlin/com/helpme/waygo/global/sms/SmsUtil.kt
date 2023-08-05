@@ -16,7 +16,7 @@ class SmsUtil(
         params["from"] = "01086027151"    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
         params["type"] = "sms"
         params["text"] = msg
-        
+
         coolSms.send(params)
     }
 }
