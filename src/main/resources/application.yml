@@ -20,17 +20,17 @@ spring:
     host: ${REDIS_HOST}
     port: ${REDIS_PORT}
 
-#cloud:
-#  aws:
-#    credentials:
-#      access-key: ${AWS_ACCESS}
-#      secret-key: ${AWS_SECRET}
-#    region:
-#      static: ${AWS_REGION}
-#    s3:
-#      bucket: ${AWS_BUCKET}
-#    stack:
-#      auto: false
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS}
+      secret-key: ${AWS_SECRET}
+    region:
+      static: ${AWS_REGION}
+    s3:
+      bucket: ${AWS_BUCKET}
+    stack:
+      auto: false
 
 jwt:
   accessSecret: ${JWT_ACCESS}
