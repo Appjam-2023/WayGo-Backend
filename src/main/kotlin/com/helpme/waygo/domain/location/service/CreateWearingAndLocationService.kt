@@ -3,6 +3,7 @@ package com.helpme.waygo.domain.location.service
 import com.helpme.waygo.domain.auth.repository.UserRepository
 import com.helpme.waygo.domain.auth.util.UserUtil
 import com.helpme.waygo.domain.location.entity.Location
+import com.helpme.waygo.domain.location.exception.DuplicateLocationException
 import com.helpme.waygo.domain.location.presentation.dto.request.CreateWearingAndLocationRequest
 import com.helpme.waygo.domain.location.repository.LocationRepository
 import org.springframework.stereotype.Service
@@ -18,6 +19,8 @@ class CreateWearingAndLocationService(
     fun execute(createWearingAndLocationRequest: CreateWearingAndLocationRequest) {
 
         val user = userUtil.fetchCurrentUser()
+        if(user.location != null)
+            throw DuplicateLocationException()
 
         val location = Location(
             longitude = createWearingAndLocationRequest.longitude,

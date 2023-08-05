@@ -22,5 +22,6 @@ enum class ErrorCode(
     USER_NOT_FOUND("해당 유저를 찾을 수 없습니다.", 404),
 
     DUPLICATE_PHONE_NUMBER("중복된 전화번호입니다", 409),
+    DUPLICATE_LOCATION("중복된 위치세션입니다", 409),
     INTERNAL_SERVER_ERROR("서버 내부 에러", 500);
 }
