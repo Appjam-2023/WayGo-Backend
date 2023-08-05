@@ -1,8 +1,14 @@
 package com.helpme.waygo.global.security.jwt
 
+import com.helpme.waygo.global.security.exception.ExpiredTokenException
+import com.helpme.waygo.global.security.exception.InvalidTokenException
 import io.jsonwebtoken.Claims
+import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Component
 import java.security.Key
 import java.time.ZonedDateTime
@@ -11,7 +17,8 @@ import javax.servlet.http.HttpServletRequest
 
 @Component
 class JwtProvider(
-    val jwtProperties: JwtProperties
+    private val jwtProperties: JwtProperties,
+    private val authDetailsService: UserDetailsService
 ) {
     companion object {
         const val ACCESS_TYPE = "access"
@@ -46,4 +53,26 @@ class JwtProvider(
 
     fun parseToken(token: String): String? =
         if(token.startsWith(TOKEN_PREFIX)) token.replace(TOKEN_PREFIX, "") else null
+
+    private fun getTokenBody(token: String, secret: Key): Claims {
+        return try {
+            Jwts.parserBuilder()
+                .setSigningKey(secret)
+                .build()
+                .parseClaimsJws(token)
+                .body
+        } catch (e: ExpiredJwtException) {
+            throw ExpiredTokenException()
+        } catch (e: Exception) {
+            throw InvalidTokenException()
+        }
+    }
+
+    fun getTokenSubject(token: String, secret: Key): String =
+        getTokenBody(token, secret).subject
+
+    fun authentication(token: String): Authentication {
+        val userDetails = authDetailsService.loadUserByUsername(getTokenSubject(token, jwtProperties.accessSecret))
+        return UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
+    }
 }
