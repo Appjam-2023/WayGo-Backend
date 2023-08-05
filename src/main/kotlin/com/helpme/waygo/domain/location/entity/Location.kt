@@ -18,6 +18,8 @@ class Location(
 
     val latitude: Double,
 
+    val imgUrl: String,
+
     @OneToOne
     @JoinColumn(name = "ward_id")
     val user: User
