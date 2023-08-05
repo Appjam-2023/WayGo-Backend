@@ -16,5 +16,7 @@ class User(
     val password: String,
 
     @Enumerated(EnumType.STRING)
-    val userRole: UserRole
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
+    val userRole: MutableList<UserRole> = mutableListOf()
 )
